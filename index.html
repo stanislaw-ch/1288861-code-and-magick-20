@@ -9,6 +9,8 @@
 </head>
 <body>
 
+  <canvas id="canvas"></canvas>
+
 <header>
   <svg style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62
         86">
@@ -186,9 +188,9 @@
   var fireballSize = 22;
 
   /* Возвращает скорость движения фаербола
-    @param {boolean} Первый параметр
+     @param {boolean} Первый параметр
 
-    @return {int}    Значение
+     @return {int}    Значение
   */
   function getFireballSpeed (isWindFromLeft) {
     if (isWindFromLeft) {
@@ -207,25 +209,26 @@
   // Содержит скорость мага
   var wizardSpeed = 3;
 
-/* Возвращает начальное положение на игровом поле относительно ширины
-  @param {int} Первый параметр
+  /* Возвращает начальное положение на игровом поле относительно ширины
+     @param {int} Первый параметр
 
-  @return {int} Значение
-*/
+     @return {int} Значение
+  */
   function getWizardX (gameFieldWidth) {
      return (gameFieldWidth - wizardWidth) / 2;
     }
 
-/* Возвращает начальное положение на игровом поле относительно высоты
-  @param {int} Первый параметр
+  /* Возвращает начальное положение на игровом поле относительно высоты
+     @param {int} Первый параметр
 
-  @return {int} Значение
-*/
+     @return {int} Значение
+  */
   function getWizardY (gameFieldHeight) {
      return gameFieldHeight / 3;
      }
 </script>
 
+<script src="js/stat.js"></script>
 <script src="js/game.js"></script>
 
 </body>
