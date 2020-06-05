@@ -17,22 +17,23 @@ var barHeight = -150 + GAP / 2;
 // Содержит ширину гистограммы
 var BAR_WIDTH = 40;
 
-/* Отрисовывает прямоугольник по заданным параметрам
-   @param {function} Контекст отрисовки
-   @param {int} Значение по оси Х
-   @param {int} Значение по оси Y
-   @param {color} Цвет элемента
-*/
+/**
+  * Отрисовывает прямоугольник по заданным параметрам
+  * @param {object} ctx
+  * @param {number} x
+  * @param {number} y
+  * @param {*} color
+  */
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
-/* Возвращает максимальный елемент массива
-   @param {array} Первый параметр
-
-   @return {int} Значение максимального елемента массива
-*/
+/**
+ * Возвращает максимальный елемент массива
+ * @param {array} arr
+ * @return {number} Значение максимального елемента массива
+ */
 var getMaxElement = function (arr) {
   var maxElement = arr[0];
 
@@ -45,21 +46,23 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-/* Возвращает случайное число в заданном интервале.
-   @param {int} Первый параметр
-   @param {int} Второй параметр
-
-   @return {int} Случайное число
-*/
+/**
+ * Возвращает случайное число в заданном интервале
+ * @param {number} min
+ * @param {number} max
+ *
+ * @return {number} Случайное число
+ */
 var getRandomInt = function (min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-/* Отрисовывает график статистики прохождения уровня по времени
-   @param {function} Контекст отрисовки
-   @param {array} Массив с игроками
-   @param {array} Массив со временем
-*/
+/**
+ * Отрисовывает график статистики прохождения уровня по времени
+ * @param {object} ctx
+ * @param {array} players
+ * @param {array} times
+ */
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP / 4, CLOUD_Y + GAP / 4, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
