@@ -43,11 +43,84 @@ var WIZARD_EYES_COLOR = [
   'green'
 ];
 
-var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
+// Содержит цвет фаерболов
+var WIZARD_FIREBALL_COLOR = [
+  '#ee4830',
+  '#30a8ee',
+  '#5ce6c0',
+  '#e848d5',
+  '#e6e848'
+];
+
+var MIN_NAME_LENGTH = 2;
+var MAX_NAME_LENGTH = 25;
 
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+
+var userDialog = document.querySelector('.setup');
+var userDialogOpen = document.querySelector('.setup-open-icon');
+var userDialogClose = userDialog.querySelector('.setup-close');
+var userNameInput = userDialog.querySelector('.setup-user-name');
+
+var setupWizard = document.querySelector('.setup-wizard');
+var setupWizardCoatColor = setupWizard.querySelector('.wizard-coat');
+var setupWizardEyesColor = setupWizard.querySelector('.wizard-eyes');
+var setupWizardFireballColor = document.querySelector('.setup-fireball');
+var inputCoatValue = document.querySelector('input[name="coat-color"]');
+var inputEyesValue = document.querySelector('input[name="eyes-color"]');
+var inputFireballValue = document.querySelector('input[name="fireball-color"]');
+
+userNameInput.addEventListener('input', function () {
+  var valueLength = userNameInput.value.length;
+
+  if (valueLength < MIN_NAME_LENGTH) {
+    userNameInput.setCustomValidity('Ещё ' + (MIN_NAME_LENGTH - valueLength) + ' симв.');
+  } else if (valueLength > MAX_NAME_LENGTH) {
+    userNameInput.setCustomValidity('Удалите лишние ' + (valueLength - MIN_NAME_LENGTH) + ' симв.');
+  } else {
+    userNameInput.setCustomValidity('');
+  }
+});
+
+var onPopupEscPress = function (evt) {
+  if (evt.key === 'Escape' && !userNameInput.focused) {
+    evt.preventDefault();
+    closePopup();
+  }
+};
+
+var openPopup = function () {
+  userDialog.classList.remove('hidden');
+
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  userDialog.classList.add('hidden');
+
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+userDialogOpen.addEventListener('click', function () {
+  openPopup();
+});
+
+userDialogOpen.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    openPopup();
+  }
+});
+
+userDialogClose.addEventListener('click', function () {
+  closePopup();
+});
+
+userDialogClose.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    closePopup();
+  }
+});
 
 /**
  * Возвращает случайное число относительно длины массива
@@ -129,4 +202,34 @@ for (var i = 0; i < wizards.length; i++) {
 }
 similarListElement.appendChild(fragment);
 
-document.querySelector('.setup-similar').classList.remove('hidden');
+// document.querySelector('.setup-similar').classList.remove('hidden');
+
+var getRrandColor = function (array) {
+  var randColor = getArr(array);
+  return randColor;
+};
+
+setupWizardCoatColor.addEventListener('click', function () {
+  var color = getRrandColor(WIZARD_COAT_COLOR);
+  setupWizardCoatColor.style.fill = color;
+  inputCoatValue.value = color;
+
+  // console.log(inputCoatValue.value);
+  // console.log(setupWizardCoatColor.style.fill);
+});
+
+setupWizardEyesColor.addEventListener('click', function () {
+  var color = getRrandColor(WIZARD_EYES_COLOR);
+  setupWizardEyesColor.style.fill = color;
+  inputEyesValue.value = color;
+
+  // console.log(inputEyesValue.value);
+  // console.log(setupWizardEyesColor.style.fill);
+});
+
+setupWizardFireballColor.addEventListener('click', function () {
+  var color = getRrandColor(WIZARD_FIREBALL_COLOR);
+
+  setupWizardFireballColor.setAttribute('style', 'background-color:' + color);
+  inputFireballValue.value = color;
+});
