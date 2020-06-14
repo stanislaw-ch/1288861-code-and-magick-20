@@ -16,7 +16,7 @@
     element.addEventListener('click', function () {
       var color = getRrandColor(elementColor);
       if (element.tagName.toLowerCase() === 'div') {
-        element.style.backgroundColor = color;
+        element.setAttribute('style', 'background-color:' + color);
       } else {
         element.style.fill = color;
         elementValue.value = color;
