@@ -18,17 +18,7 @@
   var inputEyesValue = document.querySelector('input[name="eyes-color"]');
   var inputFireballValue = document.querySelector('input[name="fireball-color"]');
 
-  userNameInput.addEventListener('input', function () {
-    var valueLength = userNameInput.value.length;
-
-    if (valueLength < MIN_NAME_LENGTH) {
-      userNameInput.setCustomValidity('Ещё ' + (MIN_NAME_LENGTH - valueLength) + ' симв.');
-    } else if (valueLength > MAX_NAME_LENGTH) {
-      userNameInput.setCustomValidity('Удалите лишние ' + (valueLength - MIN_NAME_LENGTH) + ' симв.');
-    } else {
-      userNameInput.setCustomValidity('');
-    }
-  });
+  var fragment = document.createDocumentFragment();
 
   /**
    * Отрисовывает карточку с магом
@@ -47,11 +37,22 @@
     return wizardElement;
   };
 
-  // Содержит пустой фрагмент
-  var fragment = document.createDocumentFragment();
+  userNameInput.addEventListener('input', function () {
+    var valueLength = userNameInput.value.length;
+
+    if (valueLength < MIN_NAME_LENGTH) {
+      userNameInput.setCustomValidity('Ещё ' + (MIN_NAME_LENGTH - valueLength) + ' симв.');
+    } else if (valueLength > MAX_NAME_LENGTH) {
+      userNameInput.setCustomValidity('Удалите лишние ' + (valueLength - MIN_NAME_LENGTH) + ' симв.');
+    } else {
+      userNameInput.setCustomValidity('');
+    }
+  });
+
   for (var i = 0; i < window.wizardsData.wizards.length; i++) {
     fragment.appendChild(renderWizard(window.wizardsData.wizards[i]));
   }
+
   similarListElement.appendChild(fragment);
 
   document.querySelector('.setup-similar').classList.remove('hidden');
