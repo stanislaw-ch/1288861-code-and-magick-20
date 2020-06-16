@@ -53,6 +53,8 @@
     '#e6e848'
   ];
 
+  var WIZARD_NUMBER = 4;
+
   /**
    * Возвращает случайное число относительно длины массива
    * @param {array} wizard
@@ -81,35 +83,21 @@
     return array;
   };
 
-  var wizards = [
-    {
-      firstName: getArr(WIZARD_FIRST_NAMES),
-      secondName: getArr(WIZARD_SECOND_NAMES),
-      coatColor: getArr(WIZARD_COAT_COLOR),
-      eyesColor: getArr(WIZARD_EYES_COLOR)
-    },
-    {
-      firstName: getArr(WIZARD_FIRST_NAMES),
-      secondName: getArr(WIZARD_SECOND_NAMES),
-      coatColor: getArr(WIZARD_COAT_COLOR),
-      eyesColor: getArr(WIZARD_EYES_COLOR)
-    },
-    {
-      firstName: getArr(WIZARD_FIRST_NAMES),
-      secondName: getArr(WIZARD_SECOND_NAMES),
-      coatColor: getArr(WIZARD_COAT_COLOR),
-      eyesColor: getArr(WIZARD_EYES_COLOR)
-    },
-    {
-      firstName: getArr(WIZARD_FIRST_NAMES),
-      secondName: getArr(WIZARD_SECOND_NAMES),
-      coatColor: getArr(WIZARD_COAT_COLOR),
-      eyesColor: getArr(WIZARD_EYES_COLOR)
+  var wizardsArray = function (n) {
+    var wizards = [];
+    for (var i = 0; i < n; i++) {
+      wizards[i] = {
+        firstName: getArr(WIZARD_FIRST_NAMES),
+        secondName: getArr(WIZARD_SECOND_NAMES),
+        coatColor: getArr(WIZARD_COAT_COLOR),
+        eyesColor: getArr(WIZARD_EYES_COLOR)
+      };
     }
-  ];
+    return wizards;
+  };
 
   window.wizardsData = {
-    wizards: wizards,
+    wizards: wizardsArray(WIZARD_NUMBER),
     COAT_COLOR: WIZARD_COAT_COLOR,
     EYES_COLOR: WIZARD_COAT_COLOR,
     FIREBALL_COLOR: WIZARD_FIREBALL_COLOR,
