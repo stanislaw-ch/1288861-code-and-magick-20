@@ -151,19 +151,19 @@
     document.querySelector('.setup-similar').classList.remove('hidden');
   };
 
-  var successMessage = function (message) {
-    var node = document.createElement('div');
-    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: green;';
-    node.style.position = 'absolute';
-    node.style.left = 0;
-    node.style.right = 0;
-    node.style.fontSize = '30px';
+  // var successMessage = function (message) {
+  //   var node = document.createElement('div');
+  //   node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: green;';
+  //   node.style.position = 'absolute';
+  //   node.style.left = 0;
+  //   node.style.right = 0;
+  //   node.style.fontSize = '30px';
 
-    node.textContent = message;
-    document.body.insertAdjacentElement('afterbegin', node);
+  //   node.textContent = message;
+  //   document.body.insertAdjacentElement('afterbegin', node);
 
-    // userDialog.classList.add('hidden');
-  };
+  //   // userDialog.classList.add('hidden');
+  // };
 
   var errorHandler = function (message) {
     var node = document.createElement('div');
