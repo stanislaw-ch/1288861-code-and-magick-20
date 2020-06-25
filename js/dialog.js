@@ -9,12 +9,7 @@
   var userNameInput = userDialog.querySelector('.setup-user-name');
   var dialogHandle = userDialog.querySelector('.upload');
 
-  var setupWizard = document.querySelector('.setup-wizard');
-  var setupWizardCoatColor = setupWizard.querySelector('.wizard-coat');
-  var setupWizardEyesColor = setupWizard.querySelector('.wizard-eyes');
   var setupWizardFireballColor = document.querySelector('.setup-fireball');
-  var inputCoatValue = document.querySelector('input[name="coat-color"]');
-  var inputEyesValue = document.querySelector('input[name="eyes-color"]');
   var inputFireballValue = document.querySelector('input[name="fireball-color"]');
 
   var form = userDialog.querySelector('.setup-wizard-form');
@@ -184,8 +179,5 @@
 
   form.addEventListener('submit', submitHandler);
 
-
-  // window.colorize(setupWizardCoatColor, window.wizardsData.COAT_COLOR, inputCoatValue);
-  // window.colorize(setupWizardEyesColor, window.wizardsData.EYES_COLOR, inputEyesValue);
   window.colorize(setupWizardFireballColor, window.wizardsData.FIREBALL_COLOR, inputFireballValue);
 })();
