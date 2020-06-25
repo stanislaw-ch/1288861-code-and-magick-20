@@ -140,12 +140,12 @@
     }));
   };
 
-  window.wizard.onEyesChange = window.debounce(function (color) {
+  window.wizard.wizard.onEyesChange = window.debounce(function (color) {
     eyesColor = color;
     updateWizards();
   });
 
-  window.wizard.onCoatChange = window.debounce(function (color) {
+  window.wizard.wizard.onCoatChange = window.debounce(function (color) {
     coatColor = color;
     updateWizards();
   });
@@ -179,5 +179,5 @@
 
   form.addEventListener('submit', submitHandler);
 
-  window.colorize(setupWizardFireballColor, window.wizardsData.FIREBALL_COLOR, inputFireballValue);
+  window.colorize(setupWizardFireballColor, window.wizard.FIREBALL_COLOR, inputFireballValue);
 })();

@@ -53,53 +53,44 @@
     '#e6e848'
   ];
 
-  var WIZARD_NUMBER = 4;
+  var setupWizard = document.querySelector('.setup-wizard');
+  var wizardCoatElement = setupWizard.querySelector('.wizard-coat');
+  var wizardEyesElement = setupWizard.querySelector('.wizard-eyes');
 
   /**
    * Возвращает случайное число относительно длины массива
-   * @param {array} wizard
+   * @param {array} array
    *
    * @return {number} randNumber
    */
-  var getRandNumber = function (wizard) {
-    var randNumber = Math.floor(Math.random() * wizard.length);
-
-    return randNumber;
+  var getRandomElement = function (array) {
+    var randomElementIndex = Math.floor(Math.random() * array.length);
+    return array[randomElementIndex];
   };
 
-  /**
-   * Возвращает массив со случайным прорядком элементов массива
-   * @param {array} wizard
-   *
-   * @return {array} array
-   */
-  var getArr = function (wizard) {
-    var array = [];
-    for (var i = 0; i < wizard.length; i++) {
-      var j = wizard[getRandNumber(wizard)];
-      array = [j];
+  var wizard = {
+    onEyesChange: function (color) {
+      return color;
+    },
+    onCoatChange: function (color) {
+      return color;
     }
-
-    return array;
   };
 
-  var wizardsArray = function (n) {
-    var wizards = [];
-    for (var i = 0; i < n; i++) {
-      wizards[i] = {
-        firstName: getArr(WIZARD_FIRST_NAMES),
-        secondName: getArr(WIZARD_SECOND_NAMES),
-        coatColor: getArr(WIZARD_COAT_COLOR),
-        eyesColor: getArr(WIZARD_EYES_COLOR)
-      };
-    }
-    return wizards;
-  };
+  wizardCoatElement.addEventListener('click', function () {
+    var newColor = getRandomElement(WIZARD_COAT_COLOR);
+    wizardCoatElement.style.fill = newColor;
+    wizard.onCoatChange(newColor);
+  });
 
-  window.wizardsData = {
-    wizards: wizardsArray(WIZARD_NUMBER),
-    COAT_COLOR: WIZARD_COAT_COLOR,
-    EYES_COLOR: WIZARD_COAT_COLOR,
+  wizardEyesElement.addEventListener('click', function () {
+    var newColor = getRandomElement(WIZARD_EYES_COLOR);
+    wizardEyesElement.style.fill = newColor;
+    wizard.onEyesChange(newColor);
+  });
+
+  window.wizard = {
     FIREBALL_COLOR: WIZARD_FIREBALL_COLOR,
+    wizard: wizard
   };
 })();
