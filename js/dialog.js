@@ -185,7 +185,7 @@
   form.addEventListener('submit', submitHandler);
 
 
-  window.colorize(setupWizardCoatColor, window.wizardsData.COAT_COLOR, inputCoatValue);
-  window.colorize(setupWizardEyesColor, window.wizardsData.EYES_COLOR, inputEyesValue);
+  // window.colorize(setupWizardCoatColor, window.wizardsData.COAT_COLOR, inputCoatValue);
+  // window.colorize(setupWizardEyesColor, window.wizardsData.EYES_COLOR, inputEyesValue);
   window.colorize(setupWizardFireballColor, window.wizardsData.FIREBALL_COLOR, inputFireballValue);
 })();
