@@ -173,6 +173,7 @@
     window.backend.save(new FormData(form), errorHandler, function () {
 
       userDialog.classList.add('hidden');
+      window.avatar.defaultAvatar();
     });
     evt.preventDefault();
   };
