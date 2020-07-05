@@ -2,9 +2,14 @@
 
 (function () {
   var FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+  var DEFAULT_AVATAR = './img/user-1.jpg';
 
   var fileChooser = document.querySelector('.upload input[type=file]');
   var preview = document.querySelector('.setup-user-pic');
+
+  var defaultAvatar = function () {
+    preview.src = DEFAULT_AVATAR;
+  };
 
   fileChooser.addEventListener('change', function () {
     var file = fileChooser.files[0];
@@ -24,4 +29,8 @@
       reader.readAsDataURL(file);
     }
   });
+
+  window.avatar = {
+    defaultAvatar: defaultAvatar
+  };
 })();
